@@ -1,6 +1,6 @@
 {
   "name": "traildust",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Cloudtrail logs searching tool",
   "main": "app.js",
   "scripts": {
@@ -9,6 +9,12 @@
   "bin": {
     "traildust": "./app.js"
   },
+  "repository": "bnetter/traildust",
+  "homepage": "https://github.com/bnetter/traildust",
+  "bugs": {
+    "url" : "https://github.com/bnetter/traildust/issues"
+  },
+  "keywords": ["cloudtrail", "aws", "log"],
   "author": "Benjamin Netter (https://twitter.com/benjaminnetter)",
   "license": "ISC",
   "dependencies": {

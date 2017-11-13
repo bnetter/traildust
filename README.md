@@ -1,7 +1,7 @@
 # Traildust
 Traildust is a command-line tool that helps you understand your Cloudtrail logs.
 
-![The Traildust tool](https://github.com/bnetter/traildust/raw/master/src/images/traildust.gif "The Traildust tool")
+![The Traildust tool](https://github.com/bnetter/traildust/raw/master/images/traildust.gif "The Traildust tool")
 
 
 # Installation

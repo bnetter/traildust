@@ -1,0 +1,26 @@
+{
+  "name": "traildust",
+  "version": "1.0.0",
+  "description": "A Cloudtrail logs searching tool",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "bin": {
+    "traildust": "./app.js"
+  },
+  "author": "Benjamin Netter (https://twitter.com/benjaminnetter)",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "3.5.1",
+    "cli-table": "0.3.1",
+    "colors": "1.1.2",
+    "glob": "7.1.2",
+    "graceful-fs": "4.1.11",
+    "inquirer": "4.0.0",
+    "lodash": "4.17.4",
+    "moment": "2.19.2",
+    "progress": "2.0.0",
+    "yargs": "10.0.3"
+  }
+}

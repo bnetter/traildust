@@ -27,3 +27,9 @@ By default, the tool will suggest to look for log files in the current path. Alt
 ```
 traildust --path=~/logs
 ```
+
+If your logs are on S3, you can easily sync them with a local folder using the AWS command-line tool:
+
+```
+aws s3 sync logs s3://my-logs-bucket
+```

@@ -22,6 +22,20 @@ traildust
 
 The tool will first look for gzipped logs, then will parse all events, then will ask you to filter them before display them.
 
+You can also specify criteria directly from the command-line:
+
+```
+traildust --criteria.requestParameters.bucketName=your-bucket
+```
+
+Or you can target a specific event, using the `id` parameter:
+
+```
+traildust --id=e6049254-6722-4e6d-9141-95a85f496b1a
+```
+
+---
+
 By default, the tool will suggest to look for log files in the current path. Alternatively, you can specify a path using the `path` parameter:
 
 ```

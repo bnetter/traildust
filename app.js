@@ -12,6 +12,7 @@ const colors = require('colors');
 const Table = require('cli-table');
 const moment = require('moment');
 const argv = require('yargs').argv;
+const flatten = require('flat');
 
 /**
  * Options:
@@ -90,6 +91,14 @@ function getEvents(files) {
 }
 
 function getCriteria(events) {
+  if (!_.isUndefined(argv.id)) {
+    return Promise.resolve([events, { eventID: argv.id }]);
+  }
+
+  if (!_.isUndefined(argv.criteria) && _.isPlainObject(argv.criteria)) {
+    return Promise.resolve([events, argv.criteria]);
+  }
+
   return new Promise((resolve) => addCriteria({}, resolve))
     .then((criteria) => [events, criteria]);
 }
@@ -127,10 +136,12 @@ function addCriteria(criteria, resolve) {
 }
 
 function filterEvents(events, criteria) {
+  const flattenCriteria = flatten(criteria);
+
   return Promise.filter(events, (ev) => {
     let keep = true;
 
-    _.forEach(criteria, (value, key) => {
+    _.forEach(flattenCriteria, (value, key) => {
       keep = (keep && _.get(ev, key) === value);
     });
 
@@ -167,22 +178,15 @@ function display(events) {
 function askForDetails(events) {
   const questions = [
     {
-      type: 'confirm',
-      name: 'needDetails',
-      message: 'Do you want details on a specific event?',
-      default: false
-    },
-    {
       name: 'eventID',
-      message: 'Enter an event ID',
-      when: (answers) => (answers.needDetails)
+      message: 'On which event do you want more details?'
     }
   ];
 
   return inquirer.prompt(questions)
     .then((answers) => {
       if (answers.eventID) {
-        const ev = _.filter(events, {id: answers.eventID});
+        const ev = _.filter(events, { id: answers.eventID });
 
         if (_.isArray(ev) && ev.length === 1) {
           console.log(util.inspect(ev[0].details, false, null));

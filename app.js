@@ -143,9 +143,9 @@ function sort(events) {
     return {
       id: ev.eventID,
       date: new Date(ev.eventTime),
-      user: _.get(ev, 'userIdentity.userName') || _.get(ev, 'userIdentity.accountId'),
+      user: _.get(ev, 'userIdentity.userName') || _.get(ev, 'userIdentity.accountId', 'Unknown'),
       name: ev.eventName,
-      bucket: _.get(ev, 'requestParameters.bucketName'),
+      bucket: _.get(ev, 'requestParameters.bucketName', 'Unknown'),
       details: ev
     }
   })
